@@ -91,6 +91,10 @@ void init_signals()
 	  case SIGCONT:
 	    continue ;
 #endif
+#ifdef SIGINFO
+	  case SIGINFO:
+	    continue ;
+#endif
 #if !defined (SIGCHLD) && defined (SIGCLD)
 #define SIGCHLD SIGCLD
 #endif
