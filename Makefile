@@ -8,7 +8,7 @@
 ### socket.1 in /usr/local/man/man1/socket.1
 ### Make sure the target directories exist before doing a "make install".
 
-INSTALLBASE = /usr/local
+INSTALLBASE = ${DESTDIR}${PREFIX}
 INSTALLBINPATH = $(INSTALLBASE)/bin
 INSTALLBINMODE = 755
 INSTALLMANPATH = $(INSTALLBASE)/man
@@ -43,8 +43,7 @@ LDFLAGS = $(SWITCHES) -s
 ### CDC 4680 EP/IX: (I know it *has* setsid(2), but not with bsd43)
 # SWITCHES = -systype bsd43 -DNOSETSID
 
-# FreeBSD 2.x (4.4BSD)
-SWITCHES=-DHAVE_SYS_PARAM_H -Wall
+
 
 ### It should not be necessary to change anything below this line.
 ##################################################################
