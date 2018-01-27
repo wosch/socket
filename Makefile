@@ -13,9 +13,10 @@ INSTALLBINPATH = $(INSTALLBASE)/bin
 INSTALLBINMODE = 755
 INSTALLMANPATH = $(INSTALLBASE)/man
 INSTALLMANMODE = 444
-#CC = ${CC}
+SWITCHES= -DUSE_INET6 -DHAVE_SYS_PARAM_H -Wall
 CFLAGS  = $(SWITCHES) -O
 LDFLAGS = $(SWITCHES) -s
+#CC = ${CC}
 
 ### You may need to uncomment some lines below for your operating
 ### system:
