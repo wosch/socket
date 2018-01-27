@@ -32,12 +32,18 @@ Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. */
 #  endif /* !_NSIG */
 #endif /* !NSIG */
 
-char *sys_siglist[NSIG];
+#if HAVE_SYS_PARAM_H
+# include <sys/param.h>
+#endif
 
+#if !(defined(BSD) && (BSD >=199306))
+char *sys_siglist[NSIG];
+#endif
 extern *malloc ();
 
-initialize_siglist ()
+void initialize_siglist ()
 {
+#if !(defined(BSD) && (BSD >=199306))
   register int i;
 
   for (i = 0; i < NSIG; i++)
@@ -219,4 +225,5 @@ initialize_siglist ()
 	  sprintf (sys_siglist[i], "Unknown Signal #%d", i);
 	}
     }
+#endif /* !(defined(BSD) && (BSD >=199306)) */
 }

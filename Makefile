@@ -43,7 +43,8 @@ LDFLAGS = $(SWITCHES) -s
 ### CDC 4680 EP/IX: (I know it *has* setsid(2), but not with bsd43)
 # SWITCHES = -systype bsd43 -DNOSETSID
 
-
+# FreeBSD 2.x (4.4BSD)
+SWITCHES=-DHAVE_SYS_PARAM_H -Wall
 
 ### It should not be necessary to change anything below this line.
 ##################################################################

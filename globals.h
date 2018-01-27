@@ -8,6 +8,11 @@ Please read the file COPYRIGHT for further details.
 */
 
 #include "patchlevel.h"
+ 
+#if HAVE_SYS_PARAM_H
+# include <sys/param.h>
+#endif
+
 
 /* globals for socket */
 
@@ -49,4 +54,7 @@ extern int quitflag ;
 extern int crlfflag ;
 extern int active_socket ;
 extern char *progname ;
-extern char *sys_errlist[], *sys_siglist[] ;
+
+#if !(defined(BSD) && (BSD >=199306))
+     extern char *sys_errlist[], *sys_siglist[] ;
+#endif
