@@ -1,0 +1,161 @@
+.\" -*- nroff -*-
+.ig
+$Header: socket.1[1.13] Wed Sep  9 16:46:30 1992 nickel@cs.tu-berlin.de proposed $
+This file is part of socket(1).
+Copyright (C) 1992 by Juergen Nickelsen <nickel@cs.tu-berlin.de>
+Please read the file COPYRIGHT for further details.
+..
+.TH SOCKET 1 "Aug  6, 1992"
+.SH NAME
+socket \- create tcp socket and connect to stdin/out
+.SH SYNOPSIS
+.B socket
+[
+.B \-bcfqrvw
+]
+[
+.B \-p
+.I command
+]
+.I host port
+.br
+.B socket
+[
+.B \-bcfqrvw
+]
+[
+.B \-p
+.I command
+]
+.B \-s 
+[
+.B \-l
+]
+.I port
+.SH DESCRIPTION
+.B Socket
+creates an Internet domain TCP socket and connects it to stdin and stdout.
+The 
+.I host
+argument can be an Internet number in dot-notation (like
+``130.149.28.10'') or a domain name. In this case it must be possible
+to resolve the name to a valid Internet address with
+.IR gethostbyname (3).
+The 
+.I port
+argument can be a port number or a service name which can be mapped to
+a port number by
+.IR getservbyname (3).
+.SH OPTIONS
+.TP
+.BR "\-b " (background)
+The program forks itself into the background, detaches from its
+controlling tty, closes the file descriptors associated with the tty,
+and changes its current directory to the root directory.
+.TP
+.BR "\-c " (crlf)
+Linefeed characters (LF) are converted to a Carriage Return Linefeed
+sequence (CRLF) when written to the socket.
+CRLF sequences read from the socket are converted to a single LF.
+.TP
+.BR "\-f " (fork)
+When a server connection has been accepted, a separate process is
+forked to handle the connection in background.
+.TP
+.BR "\-l " (loop)
+(only valid with
+.BR \-s )
+After a connection has been closed,
+another connection is accepted.
+.TP
+.BR "\-p " (program)
+The specified 
+.I command
+is executed for each connection. Its standard input, standard output,
+and standard error channels are connected to the socket.
+.I Command
+can be any shell command since it is passed to \fC/bin/sh\fP.
+.TP
+.BR "\-q " (quit)
+The connection is closed when an end-of-file condition occurs on standard
+input.
+.TP
+.BR "\-r " "(read only)"
+No data is read from standard input and written to the socket.
+.TP
+.BR "\-s " (server)
+A server socket is created.
+A
+.I hostname 
+argument is not required.
+.TP
+.BR "\-v " (verbose)
+Messages about connections etc. are issued to stderr.
+.TP
+.BR "\-w " "(write only)"
+No data is read from the socket and written to the standard output.
+.TP
+.B \-version
+.B Socket
+prints its version ID and terminates. 
+This must be the first argument to have an effect.
+.SH EXAMPLES
+The command
+.IP
+\fCsocket -v coma.cs.tu-berlin.de nntp\fP
+.LP
+connects to the nntp port (port 119) of coma.cs.tu-berlin.de
+(130.149.28.10).
+.br
+The command
+.IP
+\fCsocket \-sl 3425\fP
+.LP
+creates a server socket on port 3425 on the local host and waits for a
+connection.
+After a connection has been closed, a new connection is accepted. 
+.br
+The command
+.IP
+\fCsocket \-wslqvp "echo Socket! " 1938\fP
+.LP
+creates a server socket on port 1938 on the local host and waits for a
+connection.
+When a connection is accepted, the string "Socket!" is written to the
+socket.
+No data is read from the socket and written to the \fCfinger\fP
+program.
+The connection is closed when an end-of-file condition at the standard
+output of the program  occurs.
+Then a new connection is accepted.
+.SH DIAGNOSTICS
+Lots of diagnostics for failed system calls.
+.TP
+.BI "unknown host " host
+.IR host 's
+address could not be resolved.
+.TP
+.B Signal \fIsignal\fP caught, exiting
+.B Socket
+exits on any signal other than SIGTSTP, SIGCONT, SIGCLD, SIGQUIT.
+.LP
+A non-zero exit code is returned if 
+.B socket
+terminates due to an error condition or a signal.
+.SH SEE ALSO
+.BR accept (2),
+.BR bind (2),
+.BR connect (2), 
+.BR socket (2),
+.BR gethostbyname (3),
+.BR getservbyname (3)
+.SH BUGS
+\fCsocket \-p\fP terminates due to a SIGPIPE signal when there is more
+data from the socket available than the executed program wants to
+read.
+.LP
+Please report any other bugs to the author.
+.SH VERSION
+This manual page describes Socket\-1.1.
+.SH AUTHOR
+Juergen Nickelsen <nickel@cs.tu-berlin.de>

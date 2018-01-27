@@ -1,0 +1,19 @@
+-*-text-*-
+
+User-visible changes in Socket version 1.1:
+
+  - Ported to more Platforms (SGI Irix, IBM AIX, CDC EP/IX, ISC 3.0,
+    System V R4, Sequent)
+
+  - fixed getopt()-related bug in main() (opt declared as int now).
+
+  - fixed SIGWINCH-related bug (socket no longer exits on SIGWINCH).
+
+  - Background mode (-b option)
+
+  - -f option to fork child 
+
+  - fixed bug in server mode concerning the "Connection from..."
+    message
+
+  - slightly more adequate signal handling and messages

@@ -1,0 +1,14 @@
+io.o: ./globals.h
+io.o: ./patchlevel.h
+io.o: io.c
+siglist.o: siglist.c
+so_release.o: so_release.c
+socket.o: ./globals.h
+socket.o: ./patchlevel.h
+socket.o: socket.c
+socketp.o: ./globals.h
+socketp.o: ./patchlevel.h
+socketp.o: socketp.c
+utils.o: ./globals.h
+utils.o: ./patchlevel.h
+utils.o: utils.c

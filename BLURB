@@ -1,0 +1,23 @@
+This is release 1.1 of the Socket(1) program.
+
+Socket(1) implements an interface to TCP sockets at shell level.
+Client and server sockets can be used from shell scripts or
+interactively.  Socket can also run a program with stdin, stdout, and
+stderr connected to the socket connection.  Sample shell scripts
+implementing a finger client (remote only) and a finger daemon are
+included.
+
+Socket-1.1 runs on these platforms:
+
+  - AT 386, ISC 3.0                     (*)
+  - CDC 4680, EP/IX 1.4.1.              (*)
+  - DECstation 3100, Ultrix 4.0
+  - HP-UX 7.0, 8.0                      (*)
+  - IBM RS 6000, AIX 3.1.5
+  - MicroVAX II, 4.3 BSD                (*)
+  - SGI Iris, Irix 3.3.1
+  - Sequent, DYNIX v.3.0.7              (*)
+  - Sun SPARCstation II, SunOS 4.1.2
+  - System V Rel. 4                     (*)
+
+The platforms marked with "(*)" require minor editing of the Makefile.
