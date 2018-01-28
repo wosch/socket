@@ -1,4 +1,4 @@
-# socket
+# socket(1)
 
 ## What is it?
 
