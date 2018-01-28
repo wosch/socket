@@ -2,6 +2,7 @@
 
 Socket version 1.2, 27-Jan-2018
   - a new release based on FreeBSD ports patches
+  - the source code is now available on GitHub: https://github.com/wosch/socket
 
 User-visible changes in Socket version 1.1:
 
