@@ -10,3 +10,7 @@ and interactive use.
 
 See https://github.com/wosch/socket/blob/master/README for more informations.
 
+## Copyright
+
+socket(1) was written in 1992 by Juergen Nickelsen and released under the
+GNU General Public License version 1.
